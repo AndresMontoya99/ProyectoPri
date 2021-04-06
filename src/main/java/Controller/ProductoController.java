@@ -7,7 +7,8 @@ package Controller;
 
 import Model.Conexion;
 import Model.Producto;
-import View.Producto.GestionProductos;
+import View.Producto.GestionProducto;
+import View.Producto.GestionProductos1;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -34,12 +35,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class ProductoController {
     
-    private GestionProductos gp;
+    private GestionProducto gp;
     private Producto pro;
     
     private File file;
 
-    public ProductoController(GestionProductos gp) {
+    public ProductoController(GestionProducto gp) {
         this.gp = gp;
     }
     

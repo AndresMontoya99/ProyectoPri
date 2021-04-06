@@ -32,7 +32,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Andrew
  */
-public class GestionProductos1 extends javax.swing.JFrame {
+public class GestionProductos1 extends GestionProducto {
    
     private ProductoController productoController = new ProductoController(this);
 
@@ -419,6 +419,8 @@ public class GestionProductos1 extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GestionProductos1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
