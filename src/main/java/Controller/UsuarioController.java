@@ -6,7 +6,7 @@
 package Controller;
 
 import Model.Usuario;
-import View.Menú;
+import View.Menu;
 import View.Login;
 import javax.swing.JOptionPane;
 
@@ -27,31 +27,33 @@ public class UsuarioController {
     public void buscar(){
         us = new Usuario();
         
-        us.setUsuario(lg.getUsuario());
-        us.setContraseña(lg.getContraseña());
+        us.setNombre(lg.getNombre());
+        us.setContrasena(lg.getContraseña());
         mostrarMenu(us.buscarUsuario());
         
     }
     
-    public int mostrarMenu(int n){
+    public Usuario mostrarMenu(Usuario usu){
         
-        if(n == 1){
-            Menú ga = new Menú();
+        Menu ga = new Menu(usu);
+        
+        if(usu.getTipo() == 1){
+            
             ga.setVisible(true);
             lg.setVisible(false);
         }
-        if(n == 2){
-            Menú ga = new Menú();
+        if(usu.getTipo() == 2){
+            
             ga.btnMeseros.setEnabled(false);
             ga.jcbProducto.setEnabled(false);
             ga.setVisible(true);
             lg.setVisible(false);
         }
-        if(n == 0){
+        if(usu.getTipo() == 0){
             JOptionPane.showMessageDialog(lg, "Usuario invalido, Por favor verifique los datos");
-            lg.vaciarUsuario();
+            //lg.vaciarUsuario();
         }
-        return n;
+        return usu;
     }
     
 }

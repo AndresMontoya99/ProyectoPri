@@ -6,7 +6,7 @@
 package View.Producto;
 
 import Controller.ProductoController;
-import View.Menú;
+import View.Menu;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
@@ -185,9 +185,9 @@ public class BuscarProducto extends  GestionProducto {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       Menú ga = new Menú();
-       ga.setVisible(true);
-       this.setVisible(false);
+//       Menu ga = new Menu();
+//       ga.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
