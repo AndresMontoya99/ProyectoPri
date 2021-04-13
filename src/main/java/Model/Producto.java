@@ -6,6 +6,7 @@
 package Model;
 
 import java.io.FileInputStream;
+import java.io.InputStream;
 
 /**
  *
@@ -15,14 +16,14 @@ public class Producto {
     private int Id;
     private String nombre;
     private String descripcion;
-    private FileInputStream imagen;
+    private InputStream imagen;
     private float precio;
     private boolean estado;
 
     public Producto() {
     }
 
-    public Producto(int Id, String nombre, String descripcion, FileInputStream imagen, float precio, boolean estado) {
+    public Producto(int Id, String nombre, String descripcion, InputStream imagen, float precio, boolean estado) {
         this.Id = Id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -55,11 +56,11 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public FileInputStream getImagen() {
+    public InputStream getImagen() {
         return imagen;
     }
 
-    public void setImagen(FileInputStream imagen) {
+    public void setImagen(InputStream imagen) {
         this.imagen = imagen;
     }
 
