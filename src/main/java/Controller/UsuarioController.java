@@ -6,8 +6,10 @@
 package Controller;
 
 import Model.Usuario;
+import View.Menú;
 import View.Login;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -22,53 +24,34 @@ public class UsuarioController {
         this.lg = lg;
     }
     
-    public void llenaDatos(){
-    
-       us = new Usuario();
-       lg = new Login();
-     
-      // us.setUsuario("Administrador");
-       //us.setContraseña("admin");
-       
-       try{
-       us.setUsuario(lg.getUsuario());
-       //ValidaVacio(us.getUsuario());
-       us.setContraseña(lg.getContraseña());
-       ValidaVacio(us.getContraseña());
-       } catch(ExepcionVacio ex){
-           
-         JOptionPane.showMessageDialog(null, ex.getMessage());
-       }
-       
-   }
-    
-    public void EvaluaDatos(){
+    public void buscar(){
+        us = new Usuario();
         
-        try{
-       
-        if( lg.getContraseña().equals(us.getContraseña())){
-            JOptionPane.showMessageDialog( null, "La contraseña es incorrecta" );
-            lg.txtContraseña.setFocusable(true);
-            ValidaVacio(lg.getContraseña());
-       }
-        if( lg.getUsuario().equals(us.getUsuario()) ){
-            JOptionPane.showMessageDialog( null, "El usuario es incorrecta" );
-            lg.txtUsuario.setFocusable(true);
-            ValidaVacio(lg.getUsuario());
-       }
-       if(lg.getUsuario().equals(us.getUsuario()) || lg.getContraseña().equals(us.getContraseña())){
-           JOptionPane.showMessageDialog( null, us.toString() );
-       }
-       } catch( ExepcionVacio ex){
+        us.setUsuario(lg.getUsuario());
+        us.setContraseña(lg.getContraseña());
+        mostrarMenu(us.buscarUsuario());
         
-           JOptionPane.showMessageDialog(null, ex.getMessage());
-    }  
     }
     
-    public void ValidaVacio(String txt) throws ExepcionVacio{
+    public int mostrarMenu(int n){
         
-        if(txt.trim().equals("")){
-            throw new ExepcionVacio();
+        if(n == 2){
+            Menú ga = new Menú();
+            ga.setVisible(true);
+            lg.setVisible(false);
         }
+        if(n == 1){
+            Menú ga = new Menú();
+            ga.btnMeseros.setEnabled(false);
+            ga.jcbProducto.setEnabled(false);
+            ga.setVisible(true);
+            lg.setVisible(false);
+        }
+        if(n == 0){
+            JOptionPane.showMessageDialog(lg, "Usuario invalido, Por favor verifique los datos");
+            lg.vaciarUsuario();
+        }
+        return n;
     }
+    
 }

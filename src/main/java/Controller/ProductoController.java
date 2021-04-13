@@ -164,4 +164,5 @@ public class ProductoController {
             JOptionPane.showMessageDialog(gp, x.getMessage());
         }
     }
+    
 }

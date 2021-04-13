@@ -18,7 +18,7 @@ import javax.swing.*;
  
 public class Login extends javax.swing.JFrame {
 
-   private UsuarioController uc = new UsuarioController(this);
+   private UsuarioController uc ;
     
     private ImageIcon img;
     private Icon icono;
@@ -29,7 +29,6 @@ public class Login extends javax.swing.JFrame {
         
         this.PintarImagen(lbl_usuario, "src/main/java/View/icono_usuario.png");
         this.PintarImagen(lbl_contraseña, "src/main/java/View/canda.png");
-        
     }
 
     /**
@@ -53,6 +52,7 @@ public class Login extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 255));
 
@@ -94,6 +94,11 @@ public class Login extends javax.swing.JFrame {
         });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -164,8 +169,13 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        uc.llenaDatos();
+        uc = new UsuarioController(this);
+        uc.buscar();
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+       vaciarUsuario();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,6 +237,11 @@ public class Login extends javax.swing.JFrame {
     
     public void setContraseña(String u){
         txtContraseña.setText(u);
+    }
+    
+    public void vaciarUsuario(){
+        txtUsuario.setText("");
+        txtContraseña.setText("");
     }
    
 
