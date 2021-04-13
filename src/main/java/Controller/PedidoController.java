@@ -50,10 +50,6 @@ public class PedidoController {
                 
                 find = true;
                 
-              //  gp.setDescripcionBusqueda(rs.getString("descripcion"));
-               // gp.setPrecioBusqueda(rs.getString("precio"));
-                
-                
                 ByteArrayOutputStream ouput = new ByteArrayOutputStream();
                 InputStream isdatos = rs.getBinaryStream("imagen");
                 int temp=isdatos.read();
