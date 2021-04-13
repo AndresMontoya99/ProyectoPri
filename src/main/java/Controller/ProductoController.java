@@ -8,7 +8,7 @@ package Controller;
 import Model.Conexion;
 import Model.Producto;
 import View.Producto.GestionProducto;
-import View.Producto.GestionProductos1;
+import View.Producto.GestionProductos;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -22,6 +22,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -165,6 +166,57 @@ public class ProductoController {
         }catch(SQLException | NumberFormatException | HeadlessException | IOException x){
             JOptionPane.showMessageDialog(gp, x.getMessage());
         }
+    }
+    
+    public List<Producto> buscarProductos(){
+        
+        List<Producto> productos = new ArrayList<>();
+        
+        try{
+            String sql="SELECT * FROM \"Producto\";";
+
+            PreparedStatement ps= new Conexion().getConexion().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            ps.close();
+            
+            while(rs.next()){
+                
+                pro = new Producto();
+                
+                pro.setNombre(rs.getString("nombre"));
+                pro.setDescripcion(rs.getString("descripcion"));
+                
+                pro.setImagen(rs.getBinaryStream("imagen"));
+                
+                pro.setPrecio(rs.getInt("precio"));
+                pro.setEstado(rs.getBoolean("estado"));
+                
+                productos.add(pro);
+                
+                
+//                ByteArrayOutputStream ouput = new ByteArrayOutputStream();
+//                InputStream isdatos = rs.getBinaryStream("imagen");
+//                int temp=isdatos.read();
+//                while(temp>=0)
+//                {
+//                   ouput.write((char)temp);
+//                   temp=isdatos.read();
+//                }
+//                
+//                Image imagen = Toolkit.getDefaultToolkit().createImage(ouput.toByteArray());
+//                imagen = imagen.getScaledInstance(gp.getImageLabelBusqueda().getWidth(),gp.getImageLabelBusqueda().getHeight(),1);
+//                
+//                gp.setImageBusqueda(new ImageIcon(imagen));
+                
+            }
+            
+             
+            
+        }catch(SQLException | NumberFormatException | HeadlessException | IOException x){
+            JOptionPane.showMessageDialog(gp, x.getMessage());
+        }
+        
+        return productos;
     }
     
 }

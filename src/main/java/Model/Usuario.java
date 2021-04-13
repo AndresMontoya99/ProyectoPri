@@ -7,7 +7,7 @@ package Model;
 
 import View.CrearMesero;
 import View.Menu;
-import View.Producto.GestionProductos1;
+import View.Producto.GestionProductos;
 import java.awt.HeadlessException;
 import java.io.IOException;
 import java.sql.PreparedStatement;

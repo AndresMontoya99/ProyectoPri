@@ -10,7 +10,7 @@ import View.Menu;
 import View.Mesa;
 import View.Pedido;
 import View.Producto.BuscarProducto;
-import View.Producto.GestionProductos1;
+import View.Producto.GestionProductos;
 import javax.swing.JFrame;
 
 /**
@@ -20,7 +20,7 @@ import javax.swing.JFrame;
 public class MenuController {
     
     CrearMesero gm;
-    GestionProductos1 gp;
+    GestionProductos gp;
     BuscarProducto bp;
     Pedido p ;
     Menu ga;
@@ -33,7 +33,7 @@ public class MenuController {
     public void ventanaProductos(int n){
         
         if(n == 0){
-        gp = new GestionProductos1();
+        gp = new GestionProductos();
         gp.setVisible(true);
         //ga.setVisible(false);
         }
