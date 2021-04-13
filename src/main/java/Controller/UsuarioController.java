@@ -5,9 +5,15 @@
  */
 package Controller;
 
+import Model.Conexion;
 import Model.Usuario;
 import View.Menu;
 import View.Login;
+import java.awt.HeadlessException;
+import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 
@@ -25,25 +31,26 @@ public class UsuarioController {
     }
     
     public void buscar(){
-        us = new Usuario();
-        
-        us.setNombre(lg.getNombre());
-        us.setContrasena(lg.getContraseña());
-        mostrarMenu(us.buscarUsuario());
+//        us = new Usuario();
+//        
+//        us.setNombre(lg.getNombre());
+//        us.setContrasena(lg.getContrasena());
+        us = buscarUsuario();
+        mostrarMenu();
         
     }
     
-    public Usuario mostrarMenu(Usuario usu){
+    public Usuario mostrarMenu(){
         
-        Menu ga = new Menu(usu);
+        Menu ga = new Menu(us);
         
-        if(usu.getTipo() == 1){
+        if(us.getTipo() == 1){
             
             ga.setVisible(true);
             ga.btnPedidos.setEnabled(false);
             lg.setVisible(false);
         }
-        if(usu.getTipo() == 2){
+        if(us.getTipo() == 2){
             
             ga.btnMeseros.setEnabled(false);
             ga.jcbProducto.setEnabled(false);
@@ -51,11 +58,41 @@ public class UsuarioController {
             ga.setVisible(true);
             lg.setVisible(false);
         }
-        if(usu.getTipo() == 0){
+        if(us.getTipo() == 0){
             JOptionPane.showMessageDialog(lg, "Usuario invalido, Por favor verifique los datos");
             //lg.vaciarUsuario();
         }
+        return us;
+    }
+    
+    
+     public Usuario buscarUsuario(){
+        
+        Usuario usu = new Usuario();
+        
+        try{
+            String sql="SELECT * FROM \"Usuario\" where nombre = ? and contrasena = ?;";
+
+            PreparedStatement ps= new Conexion().getConexion().prepareStatement(sql);
+            ps.setString(1, lg.getNombre());
+            ps.setString(2, lg.getContrasena());
+            ResultSet rs = ps.executeQuery();
+            ps.close();
+            
+            while(rs.next()){
+                usu.setNombre(rs.getString("nombre"));
+                usu.setTipo(rs.getInt("tipo"));
+            }
+            
+            return usu;
+           
+            
+        }catch(SQLException | NumberFormatException | HeadlessException | IOException x){
+            JOptionPane.showMessageDialog(null, x.getMessage());
+        }
+        
         return usu;
+        
     }
     
 }

@@ -48,11 +48,11 @@ public class Login extends javax.swing.JFrame {
         lbl_usuario = new javax.swing.JLabel();
         lbl_contraseña = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        txtContraseña = new javax.swing.JPasswordField();
+        txtContrasena = new javax.swing.JPasswordField();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login");
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 255));
@@ -120,7 +120,7 @@ public class Login extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(lbl_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(btnAceptar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
@@ -139,7 +139,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lbl_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
@@ -232,17 +232,17 @@ public class Login extends javax.swing.JFrame {
         txtUsuario.setText(u);
     }
     
-     public String getContraseña(){
-        return txtContraseña.getText();
+     public String getContrasena(){
+        return txtContrasena.getText();
     }
     
-    public void setContraseña(String u){
-        txtContraseña.setText(u);
+    public void setContrasena(String u){
+        txtContrasena.setText(u);
     }
     
     public void vaciarUsuario(){
         txtUsuario.setText("");
-        txtContraseña.setText("");
+        txtContrasena.setText("");
     }
    
 
@@ -255,7 +255,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbl_contraseña;
     private javax.swing.JLabel lbl_usuario;
-    public javax.swing.JPasswordField txtContraseña;
+    public javax.swing.JPasswordField txtContrasena;
     public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

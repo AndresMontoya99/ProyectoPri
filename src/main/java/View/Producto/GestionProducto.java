@@ -54,4 +54,8 @@ public abstract class GestionProducto extends javax.swing.JFrame {
     
     public abstract void limpiarBusqueda();
     
+    public abstract void setEstado(boolean estado);
+    
+    public abstract boolean getEstado();
+    
 }

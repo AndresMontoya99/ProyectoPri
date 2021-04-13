@@ -63,7 +63,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Menú");
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 255));
@@ -266,6 +266,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener {
 
     private void btnMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesasActionPerformed
         // TODO add your handling code here:
+        ac.ventanaMesa();
     }//GEN-LAST:event_btnMesasActionPerformed
 
     private void btnPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidosActionPerformed

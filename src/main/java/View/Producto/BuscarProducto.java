@@ -45,7 +45,7 @@ public class BuscarProducto extends  GestionProducto {
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Buscar Producto");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -337,5 +337,15 @@ public class BuscarProducto extends  GestionProducto {
     @Override
     public void limpiarProducto() {
        
+    }
+
+    @Override
+    public void setEstado(boolean estado) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean getEstado() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

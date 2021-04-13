@@ -37,7 +37,7 @@ public class Barra extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         progress = new javax.swing.JProgressBar();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/french-restaurant-logo-design-template-2f7896b33ab323cbc1baf240f643e82b_screen.jpg"))); // NOI18N
         jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));

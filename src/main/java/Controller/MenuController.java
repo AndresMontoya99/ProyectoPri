@@ -7,6 +7,7 @@ package Controller;
 
 import View.CrearMesero;
 import View.Menu;
+import View.Mesa;
 import View.Pedido;
 import View.Producto.BuscarProducto;
 import View.Producto.GestionProductos1;
@@ -23,6 +24,7 @@ public class MenuController {
     BuscarProducto bp;
     Pedido p ;
     Menu ga;
+    Mesa ms;
     
     public MenuController(Menu ga){
         this.ga = ga;
@@ -52,6 +54,12 @@ public class MenuController {
     public void ventanaPedido(){
         p = new Pedido();
         p.setVisible(true);
+        //ga.setVisible(false);
+    }
+    
+    public void ventanaMesa(){
+        ms = new Mesa();
+        ms.setVisible(true);
         //ga.setVisible(false);
     }
     

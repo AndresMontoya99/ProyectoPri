@@ -17,16 +17,18 @@ public class Producto {
     private String descripcion;
     private FileInputStream imagen;
     private float precio;
+    private boolean estado;
 
     public Producto() {
     }
 
-    public Producto(int Id, String nombre, String descripcion, FileInputStream imagen, float precio) {
+    public Producto(int Id, String nombre, String descripcion, FileInputStream imagen, float precio, boolean estado) {
         this.Id = Id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.imagen = imagen;
         this.precio = precio;
+        this.estado = estado;
     }
 
     public int getId() {
@@ -67,6 +69,14 @@ public class Producto {
 
     public void setPrecio(float precio) {
         this.precio = precio;
+    }
+    
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
     @Override

@@ -70,7 +70,7 @@ public class ProductoController {
     
     public void guardarImagen(){
         try{
-            String sql="INSERT INTO \"Producto\"(nombre, descripcion, imagen, precio) VALUES (?, ?, ?, ?);";
+            String sql="INSERT INTO \"Producto\"(nombre, descripcion, imagen, precio, estado) VALUES (?, ?, ?, ?, ?);";
             
             FileInputStream fis = new FileInputStream(file);
             
@@ -79,6 +79,7 @@ public class ProductoController {
             ps.setString(2,gp.getDescripcion());
             ps.setBinaryStream(3,fis,file.length());
             ps.setFloat(4,gp.getPrecio());
+            ps.setBoolean(5,gp.getEstado());
             ps.execute();
             ps.close();
 

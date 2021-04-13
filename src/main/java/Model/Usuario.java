@@ -62,34 +62,6 @@ public class Usuario {
     public String toString() {
         return  "nombre =" + nombre + "\ncontraseña =" + contrasena ;
     }
-    
-    public Usuario buscarUsuario(){
-        
-        Usuario usu = new Usuario();
-        
-        try{
-            String sql="SELECT * FROM \"Usuario\" where nombre = ? and contrasena = ?;";
-
-            PreparedStatement ps= new Conexion().getConexion().prepareStatement(sql);
-            ps.setString(1, nombre);
-            ps.setString(2, contrasena);
-            ResultSet rs = ps.executeQuery();
-            ps.close();
-            
-            while(rs.next()){
-                usu.setNombre(rs.getString("nombre"));
-                usu.setTipo(rs.getInt("tipo"));
-            }
-            
-            return usu;
-           
-            
-        }catch(SQLException | NumberFormatException | HeadlessException | IOException x){
-            JOptionPane.showMessageDialog(null, x.getMessage());
-        }
-        
-        return usu;
-        
-    }
+   
    
 }
