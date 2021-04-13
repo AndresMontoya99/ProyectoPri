@@ -52,7 +52,7 @@ public class MenuController {
     public void ventanaPedido(){
         p = new Pedido();
         p.setVisible(true);
-        ga.setVisible(false);
+        //ga.setVisible(false);
     }
     
    

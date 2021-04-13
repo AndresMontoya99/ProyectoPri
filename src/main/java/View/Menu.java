@@ -51,7 +51,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener {
         btnMeseros = new javax.swing.JButton();
         jcbProducto = new javax.swing.JComboBox<>();
         btnMesas = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnPedidos = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -113,10 +113,10 @@ public class Menu extends javax.swing.JFrame implements ActionListener {
             }
         });
 
-        jButton2.setText("Aceptar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnPedidos.setText("Aceptar");
+        btnPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnPedidosActionPerformed(evt);
             }
         });
 
@@ -154,7 +154,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener {
                                     .addComponent(jLabel5))
                                 .addGap(36, 36, 36)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnMesas))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -186,7 +186,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(btnPedidos)
                     .addComponent(jLabel5))
                 .addGap(29, 29, 29))
         );
@@ -268,9 +268,9 @@ public class Menu extends javax.swing.JFrame implements ActionListener {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMesasActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidosActionPerformed
        ac.ventanaPedido();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnPedidosActionPerformed
 
     private void jcbProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbProductoActionPerformed
         // TODO add your handling code here:
@@ -323,10 +323,10 @@ public class Menu extends javax.swing.JFrame implements ActionListener {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnMesas;
+    public javax.swing.JButton btnMesas;
     public javax.swing.JButton btnMeseros;
+    public javax.swing.JButton btnPedidos;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

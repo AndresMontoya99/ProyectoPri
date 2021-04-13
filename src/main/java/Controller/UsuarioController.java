@@ -40,12 +40,14 @@ public class UsuarioController {
         if(usu.getTipo() == 1){
             
             ga.setVisible(true);
+            ga.btnPedidos.setEnabled(false);
             lg.setVisible(false);
         }
         if(usu.getTipo() == 2){
             
             ga.btnMeseros.setEnabled(false);
             ga.jcbProducto.setEnabled(false);
+            ga.btnMesas.setEnabled(false);
             ga.setVisible(true);
             lg.setVisible(false);
         }
