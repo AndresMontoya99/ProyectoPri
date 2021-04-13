@@ -54,10 +54,9 @@ public class Usuario {
     }
     
     public int buscarUsuario(){
-        int count = -1;
-        String n = "";
+        int tipo = 0;
         try{
-            String sql="SELECT count(*) as n FROM \"Usuario\" where nombre = ? and contrasena = ?;";
+            String sql="SELECT tipo FROM \"Usuario\" where nombre = ? and contrasena = ?;";
 
             PreparedStatement ps= new Conexion().getConexion().prepareStatement(sql);
             ps.setString(1,usuario);
@@ -66,19 +65,17 @@ public class Usuario {
             ps.close();
             
             while(rs.next()){
-                count = rs.getInt("n");
+                tipo = rs.getInt("tipo");
             }
-            if(usuario.equals("admin")){
-                count = 2;
-            }
-            return count;
+            
+            return tipo;
            
             
         }catch(SQLException | NumberFormatException | HeadlessException | IOException x){
             JOptionPane.showMessageDialog(null, x.getMessage());
         }
         
-        return count;
+        return tipo;
         
     }
    

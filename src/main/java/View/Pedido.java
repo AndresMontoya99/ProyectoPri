@@ -49,7 +49,7 @@ public class Pedido extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Realice el pedido");
+        jLabel1.setText("Realice El Pedido");
 
         jButton3.setBackground(new java.awt.Color(102, 153, 255));
         jButton3.setText("←");

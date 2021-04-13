@@ -31,12 +31,13 @@ public class CrearMeseroController {
       public void CrearUsuario(){
         
         try{
-            String sql="INSERT INTO \"Usuario\"(nombre, contrasena) VALUES (?, ?);";
+            String sql="INSERT INTO \"Usuario\"(nombre, contrasena, tipo) VALUES (?, ?, ?);";
             
             
             PreparedStatement ps= new Conexion().getConexion().prepareStatement(sql);
             ps.setString(1, gm.getNombre());
             ps.setString(2, gm.getPassword());
+            ps.setInt(3, 2);
             
             ps.execute();
             ps.close();

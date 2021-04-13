@@ -35,12 +35,12 @@ public class UsuarioController {
     
     public int mostrarMenu(int n){
         
-        if(n == 2){
+        if(n == 1){
             Menú ga = new Menú();
             ga.setVisible(true);
             lg.setVisible(false);
         }
-        if(n == 1){
+        if(n == 2){
             Menú ga = new Menú();
             ga.btnMeseros.setEnabled(false);
             ga.jcbProducto.setEnabled(false);
