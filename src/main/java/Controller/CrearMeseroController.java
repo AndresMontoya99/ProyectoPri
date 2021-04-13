@@ -8,7 +8,7 @@ package Controller;
 import Model.Conexion;
 import Model.Usuario;
 import View.CrearMesero;
-import View.Menú;
+import View.Menu;
 import java.awt.HeadlessException;
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -52,9 +52,9 @@ public class CrearMeseroController {
     }
       
       public void irAtras(){
-          gm.setVisible(false);
-          Menú ga = new Menú();
-          ga.setVisible(true);
+          gm.dispose();
+//          Menu ga = new Menu();
+//          ga.setVisible(true);
           
       }
 }

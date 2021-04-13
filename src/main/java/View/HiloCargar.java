@@ -25,7 +25,7 @@ public class HiloCargar extends Thread{
         for (int i = 1; i <= 100; i++) {
             progress.setForeground(Color.blue);
             progress.setValue(i);
-            pausa(25);
+            pausa(0);
         }
     }
     public void pausa(int mlSeg){

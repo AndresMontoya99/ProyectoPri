@@ -6,7 +6,7 @@
 package Controller;
 
 import View.CrearMesero;
-import View.Menú;
+import View.Menu;
 import View.Pedido;
 import View.Producto.BuscarProducto;
 import View.Producto.GestionProductos1;
@@ -16,15 +16,15 @@ import javax.swing.JFrame;
  *
  * @author RICARDO
  */
-public class MenúController {
+public class MenuController {
     
     CrearMesero gm;
     GestionProductos1 gp;
     BuscarProducto bp;
     Pedido p ;
-    Menú ga;
+    Menu ga;
     
-    public MenúController(Menú ga){
+    public MenuController(Menu ga){
         this.ga = ga;
     }
     
@@ -33,12 +33,12 @@ public class MenúController {
         if(n == 0){
         gp = new GestionProductos1();
         gp.setVisible(true);
-        ga.setVisible(false);
+        //ga.setVisible(false);
         }
         if(n == 1){
         bp = new BuscarProducto();
         bp.setVisible(true);
-        ga.setVisible(false);
+        //ga.setVisible(false);
         }
         
     }
@@ -46,7 +46,7 @@ public class MenúController {
     public void ventanaMeseros(){
         gm = new CrearMesero();
         gm.setVisible(true);
-        ga.setVisible(false);
+        //ga.setVisible(false);
     }
     
     public void ventanaPedido(){

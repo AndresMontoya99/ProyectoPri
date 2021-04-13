@@ -6,7 +6,7 @@
 package Model;
 
 import View.CrearMesero;
-import View.Menú;
+import View.Menu;
 import View.Producto.GestionProductos1;
 import java.awt.HeadlessException;
 import java.io.IOException;
@@ -21,61 +21,74 @@ import javax.swing.JOptionPane;
  */
 public class Usuario {
     
-    private String usuario,contraseña;
+    private String nombre,contrasena;
+    int tipo;
 
     public Usuario() {
         
     }
 
-    public Usuario(String usuario, String contraseña) {
-        this.usuario = usuario;
-        this.contraseña = contraseña;
+    public Usuario(String nombre, String contraseña, int tipo) {
+        this.nombre = nombre;
+        this.contrasena = contraseña;
+        this.tipo = tipo;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contraseña) {
+        this.contrasena = contraseña;
+    }
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
     }
 
     @Override
     public String toString() {
-        return  "usuario =" + usuario + "\ncontraseña =" + contraseña ;
+        return  "nombre =" + nombre + "\ncontraseña =" + contrasena ;
     }
     
-    public int buscarUsuario(){
-        int tipo = 0;
+    public Usuario buscarUsuario(){
+        
+        Usuario usu = new Usuario();
+        
         try{
-            String sql="SELECT tipo FROM \"Usuario\" where nombre = ? and contrasena = ?;";
+            String sql="SELECT * FROM \"Usuario\" where nombre = ? and contrasena = ?;";
 
             PreparedStatement ps= new Conexion().getConexion().prepareStatement(sql);
-            ps.setString(1,usuario);
-            ps.setString(2, contraseña);
+            ps.setString(1, nombre);
+            ps.setString(2, contrasena);
             ResultSet rs = ps.executeQuery();
             ps.close();
             
             while(rs.next()){
-                tipo = rs.getInt("tipo");
+                usu.setNombre(rs.getString("nombre"));
+                usu.setTipo(rs.getInt("tipo"));
             }
             
-            return tipo;
+            return usu;
            
             
         }catch(SQLException | NumberFormatException | HeadlessException | IOException x){
             JOptionPane.showMessageDialog(null, x.getMessage());
         }
         
-        return tipo;
+        return usu;
         
     }
    

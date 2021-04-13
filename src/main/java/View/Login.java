@@ -224,11 +224,11 @@ public class Login extends javax.swing.JFrame {
         
     }
     
-    public String getUsuario(){
+    public String getNombre(){
         return txtUsuario.getText();
     }
     
-    public void setUsuario(String u){
+    public void setNombre(String u){
         txtUsuario.setText(u);
     }
     
