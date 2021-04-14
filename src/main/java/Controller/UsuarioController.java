@@ -54,6 +54,7 @@ public class UsuarioController {
             ga.btnMeseros.setEnabled(false);
             ga.jcbProducto.setEnabled(false);
             ga.btnMesas.setEnabled(false);
+            ga.btnResumen.setEnabled(false);
             ga.setVisible(true);
             lg.setVisible(false);
         }
