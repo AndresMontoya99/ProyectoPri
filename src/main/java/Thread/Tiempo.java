@@ -42,7 +42,7 @@ public class Tiempo extends Thread{
                 t--;
                
                if(t == 0){
-                   c.actualizarEstadoPedido(1, pedido, "TRUE");
+                   c.actualizarEstadoPedido(1, pedido, "TRUE", "Pedido entregado");
                    
                }
             }
