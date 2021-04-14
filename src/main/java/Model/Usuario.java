@@ -21,17 +21,27 @@ import javax.swing.JOptionPane;
  */
 public class Usuario {
     
+    
     private String nombre,contrasena;
-    int tipo;
+    private int id, tipo;
 
     public Usuario() {
         
     }
 
-    public Usuario(String nombre, String contraseña, int tipo) {
+    public Usuario(int id, String nombre, String contraseña, int tipo) {
+        this.id = id;
         this.nombre = nombre;
         this.contrasena = contraseña;
         this.tipo = tipo;
+    }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {

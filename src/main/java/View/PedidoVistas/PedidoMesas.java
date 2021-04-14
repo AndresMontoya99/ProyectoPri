@@ -5,11 +5,14 @@
  */
 package View.PedidoVistas;
 
+import Controller.MesaController;
 import Controller.PedidoController;
 import View.Producto.*;
 import Controller.ProductoController;
+import Controller.UsuarioController;
 import Model.ImgTabla;
 import Model.Producto;
+import View.Mesa;
 import java.awt.Image;
 import java.io.IOException;
 import javax.swing.Icon;
@@ -27,21 +30,22 @@ import java.util.List;
  *
  * @author Andrew
  */
-public class PedidoProductos extends javax.swing.JFrame {
+public class PedidoMesas extends javax.swing.JFrame {
    
-    private ProductoController productoController = new ProductoController(null);
+    private MesaController mesaController = new MesaController(null);
+    private UsuarioController usuarioController = new UsuarioController(null);
     private PedidoController PedidoController;
 
     /**
      * Creates new form GestionProductos
      */
     
-    public PedidoProductos(){
+    public PedidoMesas(){
         initComponents();
         this.setLocationRelativeTo(null);
     }
     
-    public PedidoProductos(PedidoController PedidoController){
+    public PedidoMesas(PedidoController PedidoController){
         
         initComponents();
         
@@ -49,44 +53,32 @@ public class PedidoProductos extends javax.swing.JFrame {
         
         this.setLocationRelativeTo(null);
         
-        jTable1.setDefaultRenderer(Object.class, new ImgTabla());
-        jTable1.setRowHeight(100);
         
-        List<Producto> pro = productoController.buscarProductos("WHERE estado = TRUE");
+        List<Model.Mesa> mesas = mesaController.buscarMesas();
+        List<Model.Usuario> meseros = usuarioController.buscarMeseros();
         
-        for (Producto producto : pro) {
+        for (Model.Mesa mes : mesas) {
             
-                try{
-                    
-                    ByteArrayOutputStream ouput = new ByteArrayOutputStream();
-                    InputStream isdatos = producto.getImagen();
-                    int temp=isdatos.read();
-                    while(temp>=0)
-                    {
-                       ouput.write((char)temp);
-                       temp=isdatos.read();
-                    }
+                Object row[] = {mes.getId(), mes.getNombre(), mes.getCapacidad()};
 
-                    Image imagen = Toolkit.getDefaultToolkit().createImage(ouput.toByteArray());
-                    imagen = imagen.getScaledInstance(150,100,1);
+                ((DefaultTableModel)jTable1.getModel()).addRow(row);
 
-                    Icon icono = new ImageIcon((new ImageIcon(imagen)).getImage().getScaledInstance(150, 100, Image.SCALE_DEFAULT));
+        }
+        
+        for (Model.Usuario mes : meseros) {
+            
+                Object row[] = {mes.getId(), mes.getNombre()};
 
-                    JLabel jb = new JLabel();
-                    jb.setIcon(icono);
+                ((DefaultTableModel)jTable2.getModel()).addRow(row);
 
-                    Object row[] = {producto.getId(), producto.getNombre(),producto.getDescripcion(),producto.getPrecio(), jb};
-
-                    ((DefaultTableModel)jTable1.getModel()).addRow(row);
-
-                }catch(IOException x){
-                    JOptionPane.showMessageDialog(this, x.getMessage());
-                }
         }
         
         
         jTable1.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
         jTable1.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
+        
+        jTable2.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
+        jTable2.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
         
     }
 
@@ -105,6 +97,11 @@ public class PedidoProductos extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Crear Productor");
@@ -131,9 +128,9 @@ public class PedidoProductos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 374, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 427, Short.MAX_VALUE)
                 .addComponent(jLabel5)
-                .addContainerGap(375, Short.MAX_VALUE))
+                .addContainerGap(428, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,39 +152,85 @@ public class PedidoProductos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Nombre", "Descripcion", "Precio", "Imagen"
+                "Id", "Nombre", "Capacidad"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+        jScrollPane1.setViewportView(jTable1);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Nombre"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jTable2);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel1.setText("Mesa");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel2.setText("Mesero");
+
+        jButton1.setText("Seleccionar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 931, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(221, 221, 221)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(237, 237, 237))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(436, 436, 436)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(24, 24, 24)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -195,18 +238,18 @@ public class PedidoProductos extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -216,22 +259,29 @@ public class PedidoProductos extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        Producto pro = new Producto();
-        int row = jTable1.getSelectedRow();
-
-        pro.setId(Integer.parseInt(jTable1.getValueAt(row, 0).toString()));
-        pro.setNombre(String.valueOf(jTable1.getValueAt(row, 1)));
-        pro.setDescripcion(String.valueOf(jTable1.getValueAt(row, 2)));
-        pro.setPrecio(Float.parseFloat(jTable1.getValueAt(row, 3).toString()));
+        int rowMesa = jTable1.getSelectedRow();
+        int rowMesero = jTable2.getSelectedRow();
         
-        int cantidad = Integer.parseInt(JOptionPane.showInputDialog(this, "Cantidad"));
-
-        PedidoController.agregarProducto(pro, cantidad);
-        this.dispose();
-    }//GEN-LAST:event_jTable1MouseClicked
+        if(rowMesa != -1 && rowMesero != -1){
+            Model.Mesa ms = new Model.Mesa();
+            ms.setId((int)jTable1.getValueAt(rowMesa, 0));
+            ms.setNombre(jTable1.getValueAt(rowMesa, 1).toString());
+            
+            Model.Usuario us = new Model.Usuario();
+            us.setId((int)jTable2.getValueAt(rowMesero, 0));
+            us.setNombre(jTable2.getValueAt(rowMesero, 1).toString());
+            
+            PedidoController.enviarMesaMesero(ms, us);
+            
+            this.dispose();
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una mesa y un mesero");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,13 +300,13 @@ public class PedidoProductos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PedidoProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PedidoMesas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PedidoProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PedidoMesas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PedidoProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PedidoMesas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PedidoProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PedidoMesas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
        
         
@@ -264,19 +314,24 @@ public class PedidoProductos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PedidoProductos().setVisible(true);
+                new PedidoMesas().setVisible(true);
             }
         });
     }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 
    

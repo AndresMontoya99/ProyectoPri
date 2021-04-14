@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 
@@ -94,5 +96,38 @@ public class UsuarioController {
         return usu;
         
     }
+     
+    public List<Usuario> buscarMeseros(){
+
+       List<Usuario> usus = new ArrayList<Usuario>();
+
+       try{
+           String sql="SELECT * FROM \"Usuario\" where tipo = 2;";
+
+           PreparedStatement ps = new Conexion().getConexion().prepareStatement(sql);
+           ResultSet rs = ps.executeQuery();
+           ps.close();
+
+           while(rs.next()){
+               
+               Usuario usu = new Usuario();
+               
+               usu.setId(rs.getInt("id"));
+               usu.setNombre(rs.getString("nombre"));
+               usu.setTipo(rs.getInt("tipo"));
+               
+               usus.add(usu);
+           }
+
+           return usus;
+
+
+       }catch(SQLException | NumberFormatException | HeadlessException | IOException x){
+           JOptionPane.showMessageDialog(null, x.getMessage());
+       }
+
+       return usus;
+
+   }
     
 }

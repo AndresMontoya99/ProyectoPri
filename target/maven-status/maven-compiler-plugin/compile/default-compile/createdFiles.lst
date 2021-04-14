@@ -1,3 +1,2 @@
-Model\Conexion.class
 Model\Producto.class
 Controller\ProductoController.class

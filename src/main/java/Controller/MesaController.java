@@ -6,11 +6,15 @@
 package Controller;
 
 import Model.Conexion;
-import View.Mesa;
+import Model.Usuario;
+import Model.Mesa;
 import java.awt.HeadlessException;
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,14 +23,14 @@ import javax.swing.JOptionPane;
  */
 public class MesaController {
     
-    private Mesa ms;
+    private View.Mesa ms;
 
-    public MesaController(Mesa ms) {
+    public MesaController(View.Mesa ms) {
         this.ms = ms;
     }
     
     public void cerrar(){
-        ms.dispose();;
+        ms.dispose();
     }
     
     public void guardar(){
@@ -50,5 +54,38 @@ public class MesaController {
         } 
     
     }
+    
+    public List<Mesa> buscarMesas(){
+
+       List<Mesa> mesas = new ArrayList<Mesa>();
+
+       try{
+           String sql="SELECT * FROM \"Mesa\" where estado = TRUE;";
+
+           PreparedStatement ps = new Conexion().getConexion().prepareStatement(sql);
+           ResultSet rs = ps.executeQuery();
+           ps.close();
+
+           while(rs.next()){
+               
+               Mesa mesa = new Mesa();
+               
+               mesa.setId(rs.getInt("id"));
+               mesa.setNombre(rs.getString("nombre"));
+               mesa.setCapacidad(rs.getInt("capacidad"));
+               
+               mesas.add(mesa);
+           }
+
+           return mesas;
+
+
+       }catch(SQLException | NumberFormatException | HeadlessException | IOException x){
+           JOptionPane.showMessageDialog(null, x.getMessage());
+       }
+
+       return mesas;
+
+   }
     
 }

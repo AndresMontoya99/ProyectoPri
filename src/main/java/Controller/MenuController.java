@@ -23,7 +23,7 @@ public class MenuController {
     CrearMesero gm;
     GestionProductos gp;
     BuscarProducto bp;
-    PedidoProductos p ;
+    Pedido p ;
     Menu ga;
     Mesa ms;
     
@@ -53,7 +53,7 @@ public class MenuController {
     }
     
     public void ventanaPedido(){
-        p = new PedidoProductos();
+        p = new Pedido();
         p.setVisible(true);
         //ga.setVisible(false);
     }
