@@ -34,11 +34,6 @@ public class Pedido extends javax.swing.JFrame {
         
         jTable1.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
         jTable1.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
-        
-        Tiempo h = new Tiempo();
-        h.setControlador(pedidoController);
-        h.setTiempo(1);
-        h.start(); 
     }
 
     /**

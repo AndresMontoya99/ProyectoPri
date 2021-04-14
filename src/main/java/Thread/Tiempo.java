@@ -5,6 +5,7 @@
  */
 package Thread;
 import Controller.PedidoController;
+import Model.Pedido;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,15 +14,17 @@ import javax.swing.JOptionPane;
  */
 public class Tiempo extends Thread{
     
-     PedidoController c;
+    PedidoController c;
     int t;
+    Pedido pedido;
    
     public Tiempo(){
         super();
     }
    
-    public void setTiempo(int t){
+    public void setValores(int t, Pedido pedido){
       this.t = t;
+      this.pedido = pedido;
     }
  
     public void setControlador(PedidoController c){
@@ -39,7 +42,8 @@ public class Tiempo extends Thread{
                 t--;
                
                if(t == 0){
-                   JOptionPane.showMessageDialog(null, "El pedido esta listo");
+                   c.actualizarEstadoPedido(pedido.getId(), 1);
+                   JOptionPane.showMessageDialog(null, "Pedido entregado");
                }
             }
         }catch(InterruptedException e){

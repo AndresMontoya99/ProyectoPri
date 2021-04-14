@@ -8,6 +8,7 @@ package Controller;
 import Classes.Conexion;
 import Model.Producto;
 import Model.Usuario;
+import Thread.Tiempo;
 import View.PedidoVistas.Pedido;
 import com.mysql.cj.protocol.Resultset;
 import java.awt.HeadlessException;
@@ -16,6 +17,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
@@ -74,7 +76,7 @@ public class PedidoController {
         pe.setIdMesa(p.getMesa());
         pe.setTiempoEstimado(p.getTiempo());
         pe.setEstado(p.getEstado());
-        pe.setFecha(new Date(System.currentTimeMillis()));
+        pe.setFecha(new Time(System.currentTimeMillis()));
         
         Vector productos = ((DefaultTableModel)(p.getTabla().getModel())).getDataVector();
         
@@ -93,11 +95,10 @@ public class PedidoController {
             ps.setInt(2, pe.getIdMesero());
             ps.setInt(3, pe.getTiempoEstimado());
             ps.setInt(4, pe.getEstado());
-            ps.setDate(5, pe.getFecha());
+            ps.setTime(5, pe.getFecha());
             
             ps.execute();
             ps.close();
-            
             sql = "SELECT max(id) as id FROM  \"Pedido\";";
                     
             ps = new Conexion().getConexion().prepareStatement(sql);
@@ -107,7 +108,31 @@ public class PedidoController {
                 pe.setId(rs.getInt("id"));
             }
             
+            Tiempo h = new Tiempo();
+            h.setControlador(this);
+            h.setValores(pe.getTiempoEstimado(), pe);
+            h.start(); 
+            
             ps.close();
+        }catch(SQLException | NumberFormatException | HeadlessException | IOException x){
+            JOptionPane.showMessageDialog(p, x.getMessage());
+        }
+        
+        return pe;
+    
+    }
+
+    public Model.Pedido actualizarEstadoPedido(int idPedido, int estado){
+        
+        try{
+            
+            String sql=" UPDATE \"Pedido\" SET estado="+ estado +" WHERE id="+ idPedido +";";
+            
+            PreparedStatement ps= new Conexion().getConexion().prepareStatement(sql);
+            
+            ps.execute();
+            ps.close();
+                
         }catch(SQLException | NumberFormatException | HeadlessException | IOException x){
             JOptionPane.showMessageDialog(p, x.getMessage());
         }

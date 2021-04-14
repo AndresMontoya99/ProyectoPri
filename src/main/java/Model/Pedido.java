@@ -6,6 +6,7 @@
 package Model;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 /**
@@ -19,13 +20,13 @@ public class Pedido {
     private int tiempoEstimado;
     private int estado;
     private List<Producto> productos;
-    private Date fecha;
+    private Time fecha;
     private int cantidad;
 
     public Pedido() {
     }
 
-    public Pedido(int id, int idMesero, int idMesa, int tiempoEstimado, int estado, List<Producto> productos, Date fecha, int cantidad) {
+    public Pedido(int id, int idMesero, int idMesa, int tiempoEstimado, int estado, List<Producto> productos, Time fecha, int cantidad) {
         this.id = id;
         this.idMesero = idMesero;
         this.idMesa = idMesa;
@@ -84,11 +85,11 @@ public class Pedido {
         this.productos = productos;
     }
 
-    public Date getFecha() {
+    public Time getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(Time fecha) {
         this.fecha = fecha;
     }
 
