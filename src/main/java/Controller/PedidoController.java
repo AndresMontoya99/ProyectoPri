@@ -5,27 +5,9 @@
  */
 package Controller;
 
-import Model.Conexion;
-import Model.ImgTabla;
 import Model.Producto;
 import Model.Usuario;
 import View.PedidoVistas.Pedido;
-import java.awt.HeadlessException;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -35,7 +17,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PedidoController {
     
-    public Pedido p;
+    public View.PedidoVistas.Pedido p;
+    public Model.Pedido pe;
     
     public PedidoController(Pedido p){
         this.p = p;
@@ -70,6 +53,16 @@ public class PedidoController {
         
         p.setMesa(ms.getId());
         p.setMesero(us.getId());
+        
+    }
+    
+    public void realizarPedido(){
+        
+        pe = new Model.Pedido();
+        
+        pe.setIdMesero(p.getMesero());
+        pe.setIdMesa(p.getMesa());
+        pe.setTiempoEstimado(p.getTiempo());
         
     }
 }

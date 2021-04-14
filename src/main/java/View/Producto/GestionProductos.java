@@ -6,7 +6,7 @@
 package View.Producto;
 
 import Controller.ProductoController;
-import Model.ValidarProducto;
+import Thread.ValidarProducto;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 

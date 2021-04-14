@@ -27,8 +27,8 @@ public class Pedido extends javax.swing.JFrame {
         
         this.setLocationRelativeTo(null);
         
-//        spnMesa.setVisible(false);
-//        spnMesero.setVisible(false);
+        spnMesa.setVisible(false);
+        spnMesero.setVisible(false);
         
         jTable1.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
         jTable1.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
@@ -302,6 +302,7 @@ public class Pedido extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -379,7 +380,7 @@ public class Pedido extends javax.swing.JFrame {
     public void setMesa(int n){
         spnMesa.setValue(n);
     }
-    public int getMesaMesa(){
+    public int getMesa(){
          return (int)spnMesa.getValue();
     }
     

@@ -5,6 +5,7 @@
  */
 package View;
 
+import Thread.HiloCargar;
 import java.awt.Color;
 
 /**
