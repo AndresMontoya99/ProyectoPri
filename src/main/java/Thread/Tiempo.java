@@ -22,8 +22,8 @@ public class Tiempo extends Thread{
         super();
     }
    
-    public void setValores(int t, Pedido pedido){
-      this.t = t;
+    public void setPedido(Pedido pedido){
+      this.t = pedido.getTiempoEstimado();
       this.pedido = pedido;
     }
  
@@ -42,8 +42,8 @@ public class Tiempo extends Thread{
                 t--;
                
                if(t == 0){
-                   c.actualizarEstadoPedido(pedido.getId(), 1);
-                   JOptionPane.showMessageDialog(null, "Pedido entregado");
+                   c.actualizarEstadoPedido(1, pedido, "TRUE");
+                   
                }
             }
         }catch(InterruptedException e){
