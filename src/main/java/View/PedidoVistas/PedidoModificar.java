@@ -5,6 +5,7 @@
  */
 package View.PedidoVistas;
 
+import Classes.PedidoCustom;
 import Controller.PedidoController;
 import Controller.ProductoController;
 import javax.swing.JOptionPane;
@@ -37,23 +38,7 @@ public class PedidoModificar extends javax.swing.JFrame {
         
         this.pedidoController = PedidoController;
         
-        List<Model.Pedido> pedidosCancelar = pedidoController.buscarPedidos("where estado = 0 or estado = 1");
-        List<Model.Pedido> pedidosPagar = pedidoController.buscarPedidos("where estado = 1");
-        
-        for (Model.Pedido pc : pedidosCancelar) {
-            
-            Object row[] = {pc.getId(), pc.getIdMesa(), pc.getIdMesero(), pc.getTiempoEstimado(), pc.getFecha(), pc.getEstado()};
-
-            ((DefaultTableModel)jTable1.getModel()).addRow(row);
-        }
-        
-        for (Model.Pedido pg : pedidosPagar) {
-            
-            Object row[] = {pg.getId(), pg.getIdMesa(), pg.getIdMesero(), pg.getTiempoEstimado(), pg.getFecha(), pg.getEstado()};
-
-            ((DefaultTableModel)jTable2.getModel()).addRow(row);
-        }
-        
+        actualizarTablas();
         
         jTable1.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
         jTable1.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
@@ -134,11 +119,11 @@ public class PedidoModificar extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Mesa", "Mesero", "Tiemp Esti.", "Fecha", "Estado"
+                "Id", "IdMesa", "Mesa", "Mesero", "Tiempo Esti.", "Fecha", "Hora"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -152,11 +137,11 @@ public class PedidoModificar extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Mesa", "Mesero", "Tiempo Esti.", "Fecha", "Estado"
+                "Id", "IdMesa", "Mesa", "Mesero", "Tiempo Esti.", "Fecha", "Hora"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, true, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -255,29 +240,51 @@ public class PedidoModificar extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        int rowMesa = jTable1.getSelectedRow();
-        int rowMesero = jTable2.getSelectedRow();
+        int rowPedido = jTable1.getSelectedRow();
         
-        if(rowMesa != -1 && rowMesero != -1){
-            Model.Mesa ms = new Model.Mesa();
-            ms.setId((int)jTable1.getValueAt(rowMesa, 0));
-            ms.setNombre(jTable1.getValueAt(rowMesa, 1).toString());
+        if(rowPedido != -1){
             
-            Model.Usuario us = new Model.Usuario();
-            us.setId((int)jTable2.getValueAt(rowMesero, 0));
-            us.setNombre(jTable2.getValueAt(rowMesero, 1).toString());
+            if(JOptionPane.showConfirmDialog(this, "¿Desea cancelar el pedido?") == 0){
+                Model.Pedido pe = new Model.Pedido();
             
-            //PedidoController.enviarMesaMesero(ms, us);
+                pe.setId((int)jTable1.getValueAt(rowPedido, 0));
+                pe.setIdMesa((int)jTable1.getValueAt(rowPedido, 1));
             
-            this.dispose();
+            
+                pedidoController.actualizarEstadoPedido(2, pe, "TRUE", "Pedido cancelado");
+                
+                actualizarTablas();
+            }
+            
             
         }else{
-            JOptionPane.showMessageDialog(this, "Debe seleccionar una mesa y un mesero");
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un pedido");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
+        int rowPedido = jTable2.getSelectedRow();
+        
+        if(rowPedido != -1){
+            
+            if(JOptionPane.showConfirmDialog(this, "¿Desea pagar el pedido?") == 0){
+                Model.Pedido pe = new Model.Pedido();
+            
+                pe.setId((int)jTable2.getValueAt(rowPedido, 0));
+                pe.setIdMesa((int)jTable2.getValueAt(rowPedido, 1));
+            
+            
+                pedidoController.actualizarEstadoPedido(3, pe, "TRUE", "Pedido facturado");
+                
+                actualizarTablas();
+            }
+            
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un pedido");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -314,6 +321,38 @@ public class PedidoModificar extends javax.swing.JFrame {
                 new PedidoModificar().setVisible(true);
             }
         });
+    }
+    
+    
+    public void actualizarTablas(){
+        
+        int numDatos = ((DefaultTableModel)jTable1.getModel()).getRowCount();
+        for (int i = 0; i < numDatos; i++) {
+            ((DefaultTableModel)jTable1.getModel()).removeRow(0);
+        }
+        
+        numDatos = ((DefaultTableModel)jTable2.getModel()).getRowCount();
+        for (int i = 0; i < numDatos; i++) {
+            ((DefaultTableModel)jTable2.getModel()).removeRow(0);
+        }
+    
+        List<PedidoCustom> pedidosCancelar = pedidoController.buscarPedidosCustom("where \"Estado\" = 0 or \"Estado\" = 1");
+        List<PedidoCustom> pedidosPagar = pedidoController.buscarPedidosCustom("where \"Estado\" = 1");
+        
+        for (PedidoCustom pc : pedidosCancelar) {
+            
+            Object row[] = {pc.getId(),pc.getIdMesa(), pc.getMesa(), pc.getMesero(), pc.getTiempoEstimado(), pc.getFecha(), pc.getHora()};
+
+            ((DefaultTableModel)jTable1.getModel()).addRow(row);
+        }
+        
+        for (PedidoCustom pg : pedidosPagar) {
+            
+            Object row[] = {pg.getId(),pg.getIdMesa(), pg.getMesa(), pg.getMesero(), pg.getTiempoEstimado(), pg.getFecha(), pg.getHora()};
+
+            ((DefaultTableModel)jTable2.getModel()).addRow(row);
+        }
+    
     }
     
 

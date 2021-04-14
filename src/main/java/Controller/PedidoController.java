@@ -6,6 +6,7 @@
 package Controller;
 
 import Classes.Conexion;
+import Classes.PedidoCustom;
 import Model.Producto;
 import Model.Usuario;
 import Thread.Tiempo;
@@ -102,6 +103,40 @@ public class PedidoController {
         return pedidos;
     }
     
+    public List<PedidoCustom> buscarPedidosCustom(String cond){
+        
+        List<PedidoCustom> pedidos = new ArrayList<>();
+        
+        try{
+            String sql="SELECT * FROM \"Pedidos\" "+ cond + " ;";
+
+            PreparedStatement ps= new Conexion().getConexion().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            ps.close();
+            
+            while(rs.next()){
+                
+                PedidoCustom pec = new PedidoCustom();
+                
+                pec.setId(rs.getInt("Pedido"));
+                pec.setIdMesa(rs.getInt("IdMesa"));
+                pec.setMesa (rs.getString("Mesa"));
+                pec.setMesero(rs.getString("Mesero"));
+                pec.setTiempoEstimado(rs.getInt("Tiempo Esti."));
+                pec.setFecha(rs.getDate("Fecha"));
+                pec.setHora(rs.getTime("Hora"));
+                
+                pedidos.add(pec);                
+            }
+             
+            
+        }catch(SQLException | NumberFormatException | HeadlessException | IOException x){
+            JOptionPane.showMessageDialog(p, x.getMessage());
+        }
+        
+        return pedidos;
+    }
+    
     public void realizarPedido(){
         
         Vector productos = ((DefaultTableModel)(p.getTabla().getModel())).getDataVector();
@@ -170,7 +205,7 @@ public class PedidoController {
     
     }
 
-    public Model.Pedido actualizarEstadoPedido(int estado, Model.Pedido pe, String estadoMesa){
+    public Model.Pedido actualizarEstadoPedido(int estado, Model.Pedido pe, String estadoMesa, String msj){
         
         try{
             int es = -1;
@@ -205,7 +240,7 @@ public class PedidoController {
                     ps.close();
                 }
                 
-                JOptionPane.showMessageDialog(null, "Pedido entregado");
+                JOptionPane.showMessageDialog(null, msj);
             }
                 
         }catch(SQLException | NumberFormatException | HeadlessException | IOException x){
