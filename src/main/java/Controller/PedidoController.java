@@ -18,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
@@ -68,22 +69,58 @@ public class PedidoController {
         
     }
     
+    public List<Model.Pedido> buscarPedidos(String cond){
+        
+        List<Model.Pedido> pedidos = new ArrayList<>();
+        
+        try{
+            String sql="SELECT * FROM \"Pedido\" "+ cond + " ;";
+
+            PreparedStatement ps= new Conexion().getConexion().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            ps.close();
+            
+            while(rs.next()){
+                
+                pe = new Model.Pedido();
+                
+                pe.setId(rs.getInt("id"));
+                pe.setIdMesa(rs.getInt("idMesa"));
+                pe.setIdMesero(rs.getInt("idMesero"));
+                pe.setTiempoEstimado(rs.getInt("tiempoEstimado"));
+                pe.setFecha(rs.getTime("fecha"));
+                pe.setEstado(rs.getInt("estado"));
+                
+                pedidos.add(pe);                
+            }
+             
+            
+        }catch(SQLException | NumberFormatException | HeadlessException | IOException x){
+            JOptionPane.showMessageDialog(p, x.getMessage());
+        }
+        
+        return pedidos;
+    }
+    
     public void realizarPedido(){
-        
-        pe = new Model.Pedido();
-        
-        pe.setIdMesero(p.getMesero());
-        pe.setIdMesa(p.getMesa());
-        pe.setTiempoEstimado(p.getTiempo());
-        pe.setEstado(p.getEstado());
-        pe.setFecha(new Time(System.currentTimeMillis()));
         
         Vector productos = ((DefaultTableModel)(p.getTabla().getModel())).getDataVector();
         
-        guardarPedidoProducto(guardarPedido().getId(), productos);  
+        if(productos.size() == 0){
+            JOptionPane.showMessageDialog(p, "No se ha seleccionado ningún producto");
+        }else{
+            pe = new Model.Pedido();
         
+            pe.setIdMesero(p.getMesero());
+            pe.setIdMesa(p.getMesa());
+            pe.setTiempoEstimado(p.getTiempo());
+            pe.setEstado(p.getEstado());
+            pe.setFecha(new Time(System.currentTimeMillis()));
+            
+            guardarPedidoProducto(guardarPedido().getId(), productos);
+        }
     }
-    
+      
     public Model.Pedido guardarPedido(){
         
         try{
@@ -98,7 +135,7 @@ public class PedidoController {
             ps.setTime(5, pe.getFecha());
             
             ps.execute();
-            ps.close();
+            //ps.close();
             sql = "SELECT max(id) as id FROM  \"Pedido\";";
                     
             ps = new Conexion().getConexion().prepareStatement(sql);
@@ -110,10 +147,19 @@ public class PedidoController {
             
             Tiempo h = new Tiempo();
             h.setControlador(this);
-            h.setValores(pe.getTiempoEstimado(), pe);
+            h.setPedido(pe);
             h.start(); 
             
+            //ps.close();
+            
+            
+            sql = " UPDATE \"Mesa\" SET estado=FALSE WHERE id="+ pe.getIdMesa() +";";
+            
+            ps = new Conexion().getConexion().prepareStatement(sql);
+            
+            ps.execute();
             ps.close();
+            
         }catch(SQLException | NumberFormatException | HeadlessException | IOException x){
             JOptionPane.showMessageDialog(p, x.getMessage());
         }
@@ -122,16 +168,43 @@ public class PedidoController {
     
     }
 
-    public Model.Pedido actualizarEstadoPedido(int idPedido, int estado){
+    public Model.Pedido actualizarEstadoPedido(int estado, Model.Pedido pe, String estadoMesa){
         
         try{
+            int es = -1;
             
-            String sql=" UPDATE \"Pedido\" SET estado="+ estado +" WHERE id="+ idPedido +";";
+            String sql=" SELECT estado FROM \"Pedido\" WHERE id="+ pe.getId() +";";
             
             PreparedStatement ps= new Conexion().getConexion().prepareStatement(sql);
             
-            ps.execute();
-            ps.close();
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                es = rs.getInt("estado");
+            }
+            
+            //ps.close();
+            
+            
+            if(!(estado == 1 && es != 0)){
+                sql = " UPDATE \"Pedido\" SET estado="+ estado +" WHERE id="+ pe.getId() +";";
+            
+                ps = new Conexion().getConexion().prepareStatement(sql);
+
+                ps.execute();
+                //ps.close();
+
+                if(!estadoMesa.isEmpty()){
+                    sql = " UPDATE \"Mesa\" SET estado="+ estadoMesa +" WHERE id="+ pe.getIdMesa() +";";
+
+                    ps= new Conexion().getConexion().prepareStatement(sql);
+
+                    ps.execute();
+                    ps.close();
+                }
+                
+                JOptionPane.showMessageDialog(null, "Pedido entregado");
+            }
                 
         }catch(SQLException | NumberFormatException | HeadlessException | IOException x){
             JOptionPane.showMessageDialog(p, x.getMessage());

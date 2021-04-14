@@ -33,10 +33,6 @@ public class UsuarioController {
     }
     
     public void buscar(){
-//        us = new Usuario();
-//        
-//        us.setNombre(lg.getNombre());
-//        us.setContrasena(lg.getContrasena());
         us = buscarUsuario();
         mostrarMenu();
         
@@ -50,6 +46,7 @@ public class UsuarioController {
             
             ga.setVisible(true);
             ga.btnPedidos.setEnabled(false);
+            ga.btnModificar.setEnabled(false);
             lg.setVisible(false);
         }
         if(us.getTipo() == 2){

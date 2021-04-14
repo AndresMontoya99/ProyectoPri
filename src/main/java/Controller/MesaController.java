@@ -55,12 +55,12 @@ public class MesaController {
     
     }
     
-    public List<Mesa> buscarMesas(){
+    public List<Mesa> buscarMesas(String cond){
 
        List<Mesa> mesas = new ArrayList<Mesa>();
 
        try{
-           String sql="SELECT * FROM \"Mesa\" where estado = TRUE;";
+           String sql="SELECT * FROM \"Mesa\" "+ cond +";";
 
            PreparedStatement ps = new Conexion().getConexion().prepareStatement(sql);
            ResultSet rs = ps.executeQuery();
