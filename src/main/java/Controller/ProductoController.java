@@ -168,12 +168,12 @@ public class ProductoController {
         }
     }
     
-    public List<Producto> buscarProductos(){
+    public List<Producto> buscarProductos(String cond){
         
         List<Producto> productos = new ArrayList<>();
         
         try{
-            String sql="SELECT * FROM \"Producto\";";
+            String sql="SELECT * FROM \"Producto\""+ cond + " ;";
 
             PreparedStatement ps= new Conexion().getConexion().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -183,6 +183,7 @@ public class ProductoController {
                 
                 pro = new Producto();
                 
+                pro.setId(rs.getInt("Id"));
                 pro.setNombre(rs.getString("nombre"));
                 pro.setDescripcion(rs.getString("descripcion"));
                 

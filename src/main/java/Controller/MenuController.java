@@ -8,7 +8,8 @@ package Controller;
 import View.CrearMesero;
 import View.Menu;
 import View.Mesa;
-import View.Pedido;
+import View.PedidoVistas.Pedido;
+import View.PedidoVistas.PedidoProductos;
 import View.Producto.BuscarProducto;
 import View.Producto.GestionProductos;
 import javax.swing.JFrame;
@@ -22,7 +23,7 @@ public class MenuController {
     CrearMesero gm;
     GestionProductos gp;
     BuscarProducto bp;
-    Pedido p ;
+    PedidoProductos p ;
     Menu ga;
     Mesa ms;
     
@@ -52,7 +53,7 @@ public class MenuController {
     }
     
     public void ventanaPedido(){
-        p = new Pedido();
+        p = new PedidoProductos();
         p.setVisible(true);
         //ga.setVisible(false);
     }

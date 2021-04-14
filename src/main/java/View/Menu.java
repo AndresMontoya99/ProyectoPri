@@ -113,7 +113,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener {
             }
         });
 
-        btnPedidos.setText("Aceptar");
+        btnPedidos.setText("Gestionar");
         btnPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPedidosActionPerformed(evt);

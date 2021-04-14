@@ -33,8 +33,6 @@ public class MesaController {
         try{
             String sql="INSERT INTO \"Mesa\"(nombre, capacidad, estado) VALUES (?, ?, ?);";
             
-            int hola = ms.getCapacidad();
-            
             PreparedStatement ps= new Conexion().getConexion().prepareStatement(sql);
             ps.setString(1, ms.getNombre());
             ps.setInt(2, ms.getCapacidad());
