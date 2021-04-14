@@ -6,7 +6,7 @@
 package View.Producto;
 
 import Controller.ProductoController;
-import Model.ImgTabla;
+import Classes.ImgTabla;
 import Model.Producto;
 import java.awt.Image;
 import java.io.IOException;

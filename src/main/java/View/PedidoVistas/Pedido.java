@@ -9,6 +9,7 @@ import Controller.PedidoController;
 import View.PedidoVistas.PedidoProductos;
 import com.toedter.calendar.JCalendar;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -302,7 +303,7 @@ public class Pedido extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        
+        pedidoController.realizarPedido();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -402,6 +403,24 @@ public class Pedido extends javax.swing.JFrame {
     
     public JTable getTabla(){
         return jTable1;
+    }
+    
+    
+    public void vaciar(){
+        setMesa(0);
+        setMesaText("");
+        
+        setMesero(0);
+        setMeseroText("");
+        
+        setTiempo(0);
+        setEstado(0);
+        
+        int numDatos = ((DefaultTableModel)jTable1.getModel()).getRowCount();
+        for (int i = 0; i < numDatos; i++) {
+            ((DefaultTableModel)jTable1.getModel()).removeRow(0);
+        }
+        
     }
     
     

@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Model.Conexion;
+import Classes.Conexion;
 import Model.Usuario;
 import Model.Mesa;
 import java.awt.HeadlessException;

@@ -10,7 +10,7 @@ import Controller.PedidoController;
 import View.Producto.*;
 import Controller.ProductoController;
 import Controller.UsuarioController;
-import Model.ImgTabla;
+import Classes.ImgTabla;
 import Model.Producto;
 import View.Mesa;
 import java.awt.Image;

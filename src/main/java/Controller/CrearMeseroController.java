@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Model.Conexion;
+import Classes.Conexion;
 import Model.Usuario;
 import View.CrearMesero;
 import View.Menu;

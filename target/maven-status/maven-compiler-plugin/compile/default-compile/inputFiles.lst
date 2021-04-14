@@ -1,7 +1,6 @@
 E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Model\Conexion.java
 E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Model\ImgTabla.java
 E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Model\Mesa.java
-E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\HiloCargar.java
 E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\CrearMesero.java
 E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\Producto\GestionProductos.java
 E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\PedidoVistas\PedidoMesas.java
@@ -9,7 +8,6 @@ E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\PedidoV
 E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Controller\MenuController.java
 E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Controller\CrearMeseroController.java
 E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\Menu.java
-E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Model\ValidarProducto.java
 E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\Producto\GestionProducto.java
 E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\Mesa.java
 E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\Producto\CatalogoProductos.java
@@ -18,7 +16,9 @@ E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\Login.j
 E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\PedidoVistas\Pedido.java
 E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Controller\MesaController.java
 E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\PedidoVistas\Test.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Thread\ValidarProducto.java
 E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Controller\UsuarioController.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Thread\HiloCargar.java
 E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\Producto\BuscarProducto.java
 E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Model\Usuario.java
 E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Controller\ProductoController.java

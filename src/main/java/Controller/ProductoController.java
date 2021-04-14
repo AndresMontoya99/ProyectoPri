@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Model.Conexion;
+import Classes.Conexion;
 import Model.Producto;
 import View.Producto.GestionProducto;
 import View.Producto.GestionProductos;
@@ -192,23 +192,7 @@ public class ProductoController {
                 pro.setPrecio(rs.getInt("precio"));
                 pro.setEstado(rs.getBoolean("estado"));
                 
-                productos.add(pro);
-                
-                
-//                ByteArrayOutputStream ouput = new ByteArrayOutputStream();
-//                InputStream isdatos = rs.getBinaryStream("imagen");
-//                int temp=isdatos.read();
-//                while(temp>=0)
-//                {
-//                   ouput.write((char)temp);
-//                   temp=isdatos.read();
-//                }
-//                
-//                Image imagen = Toolkit.getDefaultToolkit().createImage(ouput.toByteArray());
-//                imagen = imagen.getScaledInstance(gp.getImageLabelBusqueda().getWidth(),gp.getImageLabelBusqueda().getHeight(),1);
-//                
-//                gp.setImageBusqueda(new ImageIcon(imagen));
-                
+                productos.add(pro);                
             }
             
              

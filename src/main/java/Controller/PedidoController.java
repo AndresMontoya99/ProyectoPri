@@ -5,9 +5,19 @@
  */
 package Controller;
 
+import Classes.Conexion;
 import Model.Producto;
 import Model.Usuario;
 import View.PedidoVistas.Pedido;
+import com.mysql.cj.protocol.Resultset;
+import java.awt.HeadlessException;
+import java.io.IOException;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -63,6 +73,77 @@ public class PedidoController {
         pe.setIdMesero(p.getMesero());
         pe.setIdMesa(p.getMesa());
         pe.setTiempoEstimado(p.getTiempo());
+        pe.setEstado(p.getEstado());
+        pe.setFecha(new Date(System.currentTimeMillis()));
         
+        Vector productos = ((DefaultTableModel)(p.getTabla().getModel())).getDataVector();
+        
+        guardarPedidoProducto(guardarPedido().getId(), productos);  
+        
+    }
+    
+    public Model.Pedido guardarPedido(){
+        
+        try{
+            
+            String sql="INSERT INTO \"Pedido\" (\"idMesa\", \"idMesero\", \"tiempoEstimado\", \"estado\", \"fecha\") VALUES (?, ?, ?, ?, ?);";
+            
+            PreparedStatement ps= new Conexion().getConexion().prepareStatement(sql);
+            ps.setInt(1, pe.getIdMesa());
+            ps.setInt(2, pe.getIdMesero());
+            ps.setInt(3, pe.getTiempoEstimado());
+            ps.setInt(4, pe.getEstado());
+            ps.setDate(5, pe.getFecha());
+            
+            ps.execute();
+            ps.close();
+            
+            sql = "SELECT max(id) as id FROM  \"Pedido\";";
+                    
+            ps = new Conexion().getConexion().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                pe.setId(rs.getInt("id"));
+            }
+            
+            ps.close();
+        }catch(SQLException | NumberFormatException | HeadlessException | IOException x){
+            JOptionPane.showMessageDialog(p, x.getMessage());
+        }
+        
+        return pe;
+    
+    }
+    
+    public void guardarPedidoProducto(int idPedido, Vector productos){
+        
+        try{
+            
+            String sql="INSERT INTO \"Pedido_Producto\" (\"idPedido\", \"idProducto\", \"cantidad\") VALUES ";
+            
+            for (int i = 0; i < productos.size(); i++) {
+                
+                Object producto = productos.get(i);
+                sql += " ( " + idPedido + " , "+ ((int)((Vector)producto).get(0)) +" , "+ ((int)((Vector)producto).get(4)) +" )";
+                
+                if(i < productos.size() - 1){
+                    sql += ", ";
+                } 
+            }
+            
+            PreparedStatement ps= new Conexion().getConexion().prepareStatement(sql);
+            
+            ps.execute();
+            ps.close();
+            
+            p.vaciar();
+            
+            JOptionPane.showMessageDialog(p,"Guardado correctamente");
+            
+        }catch(SQLException | NumberFormatException | HeadlessException | IOException x){
+            JOptionPane.showMessageDialog(p, x.getMessage());
+        } 
+    
     }
 }
