@@ -39,7 +39,7 @@ public class Tiempo extends Thread{
                 t--;
                
                if(t == 0){
-                   JOptionPane.showMessageDialog(null, "tiempo agotado");
+                   JOptionPane.showMessageDialog(null, "El pedido esta listo");
                }
             }
         }catch(InterruptedException e){
