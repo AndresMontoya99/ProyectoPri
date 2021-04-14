@@ -65,4 +65,10 @@ public class PedidoController {
         pe.setTiempoEstimado(p.getTiempo());
         
     }
+    
+    public void tiempo(String n){
+       
+      String nuevo = n;
+      p.setTiempo(Integer.parseInt(n));
+    } 
 }

@@ -6,6 +6,7 @@
 package View.PedidoVistas;
 
 import Controller.PedidoController;
+import Thread.Tiempo;
 import View.PedidoVistas.PedidoProductos;
 import com.toedter.calendar.JCalendar;
 import javax.swing.JTable;
@@ -32,6 +33,11 @@ public class Pedido extends javax.swing.JFrame {
         
         jTable1.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
         jTable1.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
+        
+        Tiempo h = new Tiempo();
+        h.setControlador(pedidoController);
+        h.setTiempo(1);
+        h.start(); 
     }
 
     /**
@@ -429,6 +435,6 @@ public class Pedido extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcbEstado;
     private javax.swing.JSpinner spnMesa;
     private javax.swing.JSpinner spnMesero;
-    private javax.swing.JSpinner spnTiempo;
+    public javax.swing.JSpinner spnTiempo;
     // End of variables declaration//GEN-END:variables
 }
