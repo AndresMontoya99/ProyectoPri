@@ -9,6 +9,7 @@ import Controller.MenuController;
 import Controller.PedidoController;
 import Model.Usuario;
 import View.PedidoVistas.PedidoModificar;
+import View.PedidoVistas.ResumenVentas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -153,6 +154,11 @@ public class Menu extends javax.swing.JFrame implements ActionListener {
         jLabel9.setText("Resumen de ventas:");
 
         btnResumen.setText("Gestionar");
+        btnResumen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResumenActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -311,6 +317,11 @@ public class Menu extends javax.swing.JFrame implements ActionListener {
         // TODO add your handling code here:
         new PedidoModificar().setVisible(true);
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnResumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResumenActionPerformed
+        // TODO add your handling code here:
+        new ResumenVentas().setVisible(true);
+    }//GEN-LAST:event_btnResumenActionPerformed
 
     /**
      * @param args the command line arguments
