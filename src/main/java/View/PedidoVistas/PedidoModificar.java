@@ -18,25 +18,17 @@ import java.util.List;
  */
 public class PedidoModificar extends javax.swing.JFrame {
    
-    private ProductoController productoController = new ProductoController(null);
-    private PedidoController pedidoController;
+    private PedidoController pedidoController = new PedidoController(null);
 
     /**
      * Creates new form GestionProductos
      */
-    
+ 
     public PedidoModificar(){
-        initComponents();
-        this.setLocationRelativeTo(null);
-    }
-    
-    public PedidoModificar(PedidoController PedidoController){
         
         initComponents();
         
         this.setLocationRelativeTo(null);
-        
-        this.pedidoController = PedidoController;
         
         actualizarTablas();
         

@@ -309,7 +309,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-        new PedidoModificar(new PedidoController(null)).setVisible(true);
+        new PedidoModificar().setVisible(true);
     }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
