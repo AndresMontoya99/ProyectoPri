@@ -20,13 +20,14 @@ public class Pedido {
     private int tiempoEstimado;
     private int estado;
     private List<Producto> productos;
-    private Time fecha;
+    private Date fecha;
+    private Time hora;
     private int cantidad;
 
     public Pedido() {
     }
 
-    public Pedido(int id, int idMesero, int idMesa, int tiempoEstimado, int estado, List<Producto> productos, Time fecha, int cantidad) {
+    public Pedido(int id, int idMesero, int idMesa, int tiempoEstimado, int estado, List<Producto> productos, Date fecha, Time hora, int cantidad) {
         this.id = id;
         this.idMesero = idMesero;
         this.idMesa = idMesa;
@@ -34,6 +35,7 @@ public class Pedido {
         this.estado = estado;
         this.productos = productos;
         this.fecha = fecha;
+        this.hora = hora;
         this.cantidad = cantidad;
     }
 
@@ -85,11 +87,19 @@ public class Pedido {
         this.productos = productos;
     }
 
-    public Time getFecha() {
+    public Time getHora() {
+        return hora;
+    }
+
+    public void setHora(Time hora) {
+        this.hora = hora;
+    }
+
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(Time fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 

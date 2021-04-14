@@ -230,7 +230,7 @@ public class PedidoProductos extends javax.swing.JFrame {
         int cantidad = Integer.parseInt(JOptionPane.showInputDialog(this, "Cantidad"));
 
         PedidoController.agregarProducto(pro, cantidad);
-        this.dispose();
+        //this.dispose();
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**

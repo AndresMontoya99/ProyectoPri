@@ -10,7 +10,6 @@ import Model.Producto;
 import Model.Usuario;
 import Thread.Tiempo;
 import View.PedidoVistas.Pedido;
-import com.mysql.cj.protocol.Resultset;
 import java.awt.HeadlessException;
 import java.io.IOException;
 import java.sql.Date;
@@ -88,7 +87,8 @@ public class PedidoController {
                 pe.setIdMesa(rs.getInt("idMesa"));
                 pe.setIdMesero(rs.getInt("idMesero"));
                 pe.setTiempoEstimado(rs.getInt("tiempoEstimado"));
-                pe.setFecha(rs.getTime("fecha"));
+                pe.setFecha(rs.getDate("fecha"));
+                pe.setHora(rs.getTime("hora"));
                 pe.setEstado(rs.getInt("estado"));
                 
                 pedidos.add(pe);                
@@ -115,7 +115,8 @@ public class PedidoController {
             pe.setIdMesa(p.getMesa());
             pe.setTiempoEstimado(p.getTiempo());
             pe.setEstado(p.getEstado());
-            pe.setFecha(new Time(System.currentTimeMillis()));
+            pe.setFecha(new Date(System.currentTimeMillis()));
+            pe.setHora(new Time(System.currentTimeMillis()));
             
             guardarPedidoProducto(guardarPedido().getId(), productos);
         }
@@ -125,14 +126,15 @@ public class PedidoController {
         
         try{
             
-            String sql="INSERT INTO \"Pedido\" (\"idMesa\", \"idMesero\", \"tiempoEstimado\", \"estado\", \"fecha\") VALUES (?, ?, ?, ?, ?);";
+            String sql="INSERT INTO \"Pedido\" (\"idMesa\", \"idMesero\", \"tiempoEstimado\", \"estado\", \"fecha\", \"hora\") VALUES (?, ?, ?, ?, ?, ?);";
             
             PreparedStatement ps= new Conexion().getConexion().prepareStatement(sql);
             ps.setInt(1, pe.getIdMesa());
             ps.setInt(2, pe.getIdMesero());
             ps.setInt(3, pe.getTiempoEstimado());
             ps.setInt(4, pe.getEstado());
-            ps.setTime(5, pe.getFecha());
+            ps.setDate(5, pe.getFecha());
+            ps.setTime(6, pe.getHora());
             
             ps.execute();
             //ps.close();
