@@ -107,6 +107,7 @@ public class Pedido extends javax.swing.JFrame {
         jButton2.setText("Asignar mesa");
 
         jTextField2.setEditable(false);
+        jTextField2.setEnabled(false);
 
         jLabel3.setText("Mesa:");
 
@@ -119,6 +120,7 @@ public class Pedido extends javax.swing.JFrame {
 
         jLabel2.setText("Mesero:");
 
+        jTextField1.setEditable(false);
         jTextField1.setEnabled(false);
 
         jButton5.setText("Realizar pedido");
