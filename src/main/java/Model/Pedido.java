@@ -5,6 +5,7 @@
  */
 package Model;
 
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -18,17 +19,21 @@ public class Pedido {
     private int tiempoEstimado;
     private int estado;
     private List<Producto> productos;
+    private Date fecha;
+    private int cantidad;
 
     public Pedido() {
     }
 
-    public Pedido(int id, int idMesero, int idMesa, int tiempoEstimado, int estado, List<Producto> productos) {
+    public Pedido(int id, int idMesero, int idMesa, int tiempoEstimado, int estado, List<Producto> productos, Date fecha, int cantidad) {
         this.id = id;
         this.idMesero = idMesero;
         this.idMesa = idMesa;
         this.tiempoEstimado = tiempoEstimado;
         this.estado = estado;
         this.productos = productos;
+        this.fecha = fecha;
+        this.cantidad = cantidad;
     }
 
     public int getId() {
@@ -78,6 +83,24 @@ public class Pedido {
     public void setProductos(List<Producto> productos) {
         this.productos = productos;
     }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+    
+    
     
     
 }
