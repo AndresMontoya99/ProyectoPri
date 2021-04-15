@@ -1,28 +1,31 @@
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\View\PedidoVistas\Test.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\View\PedidoVistas\PedidoMesas.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\View\Producto\CatalogoProductos.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\Model\Usuario.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\Controller\CrearMeseroController.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\View\Producto\GestionProducto.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\Controller\MesaController.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\Model\Pedido.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\Controller\ProductoController.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\View\Producto\GestionProductos.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\Controller\UsuarioController.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\View\CrearMesero.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\View\Producto\BuscarProducto.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\Model\ValidarProducto.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\Model\Conexion.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\View\Login.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\Model\Producto.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\Model\ImgTabla.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\Controller\MenuController.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\View\Barra.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\View\HiloCargar.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\Model\Mesa.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\View\PedidoVistas\Pedido.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\Controller\PedidoController.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\Controller\RenderImagen.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\View\Menu.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\View\Mesa.java
-C:\Users\RICARDO\OneDrive\Documentos\ProyectoPri-main\ProyectoPri\src\main\java\View\PedidoVistas\PedidoProductos.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Classes\PedidoCustom.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Model\Mesa.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\CrearMesero.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Classes\Conexion.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Classes\ImgTabla.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\Producto\GestionProductos.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\PedidoVistas\PedidoMesas.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\PedidoVistas\PedidoProductos.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Controller\MenuController.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Controller\CrearMeseroController.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\Menu.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\PedidoVistas\ResumenVentas.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\Producto\GestionProducto.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\Mesa.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Thread\Tiempo.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\Producto\CatalogoProductos.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\Barra.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\Login.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\PedidoVistas\Pedido.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Controller\MesaController.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\MirarMesas.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Thread\ValidarProducto.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\PedidoVistas\PedidoModificar.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Controller\UsuarioController.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Thread\HiloCargar.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\View\Producto\BuscarProducto.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Model\Usuario.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Controller\ProductoController.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Controller\PedidoController.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Model\Pedido.java
+E:\Uni\Programacion Iterativa\ProyectoPRI\ProyectoPri\src\main\java\Model\Producto.java
