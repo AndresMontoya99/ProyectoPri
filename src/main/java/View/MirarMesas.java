@@ -30,6 +30,9 @@ public class MirarMesas extends javax.swing.JFrame {
     
     public MirarMesas() {
         initComponents();
+        
+        this.setLocationRelativeTo(null);
+        
         actualizarMesas();
     }
 
