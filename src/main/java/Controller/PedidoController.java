@@ -137,6 +137,73 @@ public class PedidoController {
         return pedidos;
     }
     
+    
+    public List<PedidoCustom> buscarVentaCustom(Date fechaIni, Date fechaFin){
+        
+        List<PedidoCustom> pedidos = new ArrayList<>();
+        
+        try{
+            String sql="select * from \"Ventas\" where \"Fecha\" between ? and ?;";
+
+            PreparedStatement ps= new Conexion().getConexion().prepareStatement(sql);
+            ps.setDate(1, fechaIni);
+            ps.setDate(2, fechaFin);
+            
+            ResultSet rs = ps.executeQuery();
+            ps.close();
+            
+            while(rs.next()){
+                
+                PedidoCustom pec = new PedidoCustom();
+                
+                pec.setId(rs.getInt("Pedido"));
+                pec.setNombreProducto(rs.getString("Nombre Producto"));
+                pec.setFecha(rs.getDate("Fecha"));
+                pec.setHora(rs.getTime("Hora"));
+                pec.setCantidad(rs.getInt("Cantidad"));
+                pec.setPrecio(rs.getDouble("Precio"));
+                pec.setTotal(rs.getDouble("Total"));
+                
+                pedidos.add(pec);                
+            }
+             
+            
+        }catch(SQLException | NumberFormatException | HeadlessException | IOException x){
+            JOptionPane.showMessageDialog(p, x.getMessage());
+        }
+        
+        return pedidos;
+    }
+    
+    
+    public String buscarVentaCustomResult(Date fechaIni, Date fechaFin){
+        
+        String valor = "0";
+        
+        try{
+            String sql="select \"Ventas\" ( ? , ? );";
+
+            PreparedStatement ps= new Conexion().getConexion().prepareStatement(sql);
+            ps.setDate(1, fechaIni);
+            ps.setDate(2, fechaFin);
+            
+            ResultSet rs = ps.executeQuery();
+            ps.close();
+            
+            while(rs.next()){
+                valor = rs.getString("Ventas");               
+            }
+             
+            
+        }catch(SQLException | NumberFormatException | HeadlessException | IOException x){
+            JOptionPane.showMessageDialog(p, x.getMessage());
+        }
+        
+        return valor;
+    }
+    
+    
+    
     public void realizarPedido(){
         
         Vector productos = ((DefaultTableModel)(p.getTabla().getModel())).getDataVector();

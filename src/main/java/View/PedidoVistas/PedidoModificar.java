@@ -38,6 +38,14 @@ public class PedidoModificar extends javax.swing.JFrame {
         jTable2.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
         jTable2.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
         
+        
+        
+        jTable1.getTableHeader().getColumnModel().getColumn(1).setMaxWidth(0);
+        jTable1.getTableHeader().getColumnModel().getColumn(1).setMinWidth(0);
+        
+        jTable2.getTableHeader().getColumnModel().getColumn(1).setMaxWidth(0);
+        jTable2.getTableHeader().getColumnModel().getColumn(1).setMinWidth(0);
+        
     }
 
     /**
