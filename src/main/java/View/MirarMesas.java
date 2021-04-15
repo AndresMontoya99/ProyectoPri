@@ -233,7 +233,7 @@ public class MirarMesas extends javax.swing.JFrame {
                     
             int mesaId = (int)((DefaultTableModel)jTable1.getModel()).getValueAt(rowMesa, 0);
                     
-            List<PedidoCustom> pedidos = pedidoController.buscarPedidosCustom("where \"IdMesa\"  = " + mesaId + " and \"Estado\" = 0");
+            List<PedidoCustom> pedidos = pedidoController.buscarPedidosCustom("where \"IdMesa\"  = " + mesaId /*+ " and \"Estado\" = 0"*/);
             
             for (PedidoCustom pe : pedidos) {
                 
