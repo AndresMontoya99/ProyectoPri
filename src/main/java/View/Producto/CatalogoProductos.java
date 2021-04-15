@@ -90,7 +90,7 @@ public class CatalogoProductos extends GestionProducto {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Crear Productor");
+        setTitle("Catalogo de productos");
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 255));
 

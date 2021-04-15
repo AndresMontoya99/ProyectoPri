@@ -107,7 +107,7 @@ public class PedidoProductos extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Crear Productor");
+        setTitle("Catalogo");
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 255));
 

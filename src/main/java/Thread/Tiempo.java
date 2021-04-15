@@ -32,7 +32,6 @@ public class Tiempo extends Thread{
     }
     
     public void run(){
-           // t++;
         try{
            
             while(t >= 0){

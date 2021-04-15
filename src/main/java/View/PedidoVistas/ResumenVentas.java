@@ -50,6 +50,7 @@ public class ResumenVentas extends javax.swing.JFrame {
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Resumen de ventas");
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 255));
         jPanel1.setForeground(new java.awt.Color(0, 102, 255));

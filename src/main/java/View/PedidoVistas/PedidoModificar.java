@@ -63,7 +63,7 @@ public class PedidoModificar extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Crear Productor");
+        setTitle("Modificar Pedido");
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 255));
 
